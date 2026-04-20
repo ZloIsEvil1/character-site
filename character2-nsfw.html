@@ -14,10 +14,9 @@
   .nsfw-toggle:hover { background: rgba(255,255,255,.15); }
   .layout { display:grid; grid-template-columns: minmax(0,1fr) minmax(320px,440px); }
   .content { padding:26px; }
-  h1 { margin-top:0; }
   .portrait { height:260px; border-radius:14px; background:linear-gradient(145deg,#db5e35,#8d244d); display:grid; place-items:center; font-size:3rem; border:1px solid rgba(255,255,255,.2); }
   .relief { position:relative; border-left:1px solid rgba(255,255,255,.16); background:linear-gradient(to left, rgba(12,12,16,.82), rgba(12,12,16,.35)); min-height:720px; overflow:hidden; }
-  .relief::after { content:""; position:absolute; inset:0; background:url('reliefs/char2relief.png') center center/auto 96% no-repeat; }
+  .relief::after { content:""; position:absolute; inset:0; background:url('reliefs/char2nsfw.png') center center/auto 96% no-repeat; }
   .back { display:inline-block; margin-top:16px; color:#ffab8c; border:1px solid #ffab8c; padding:10px 16px; border-radius:10px; text-decoration:none; }
   @media (max-width:860px){ .header { flex-direction: column; gap: 12px; align-items: flex-start; } .layout{grid-template-columns:1fr;} .relief{border-left:0;border-top:1px solid rgba(255,255,255,.16); min-height:500px; background:linear-gradient(to top, rgba(12,12,16,.82), rgba(12,12,16,.35));} .relief::after{background-size:auto 94%; background-position:center center;} }
 </style>
@@ -26,7 +25,7 @@
   <article class="card">
     <header class="header">
       <h1>Character 2 · Blaze Runner</h1>
-      <a href="character2-nsfw.html" class="nsfw-toggle">NSFW Version</a>
+      <a href="character2.html" class="nsfw-toggle">Safe Version</a>
     </header>
     <div class="layout">
       <section class="content">
@@ -34,7 +33,7 @@
         <p>A high-speed duelist built for aggressive playstyles. Great at quick entries, burst combos, and evasive movement.</p>
         <a class="back" href="index.html">← Back to profiles</a>
       </section>
-      <aside class="relief" aria-label="Character 2 full-body relief artwork"></aside>
+      <aside class="relief" aria-label="Character 2 full-body relief artwork (NSFW)"></aside>
     </div>
   </article>
 </body>
