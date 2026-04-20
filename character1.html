@@ -2,51 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Character 1</title>
-
 <style>
+  :root {
+    color-scheme: dark;
+    --accent: #66f0ff;
+    --bg: #101632;
+    --panel: #1a2248;
+  }
+
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f3460;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top right, rgba(102, 240, 255, 0.2), transparent 45%), var(--bg);
     color: white;
-    text-align: center;
-    padding: 40px;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+  }
+
+  .card {
+    width: min(760px, 95vw);
+    background: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  h1 {
+    margin: 0 0 16px;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+  }
+
+  .media {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 18px;
   }
 
   img {
-    width: 250px;
-    border-radius: 15px;
-    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #0e122b;
+  }
+
+  .stats {
+    margin: 18px 0 8px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  .stats li {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 10px 12px;
+    border-radius: 10px;
   }
 
   .back {
     display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    background: #00f7ff;
-    color: black;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
     text-decoration: none;
-    border-radius: 8px;
-    transition: 0.3s;
   }
 
-  .back:hover {
-    background: white;
+  .back:hover,
+  .back:focus-visible {
+    background: var(--accent);
+    color: #0e1b2e;
+    outline: none;
   }
-
 </style>
 </head>
-
 <body>
-
-<h1>Character 1</h1>
-
-<img src="images/char1.png" alt="Character 1">
-
-<p>This is where you describe the character.</p>
-
-<a href="index.html" class="back">⬅ Back</a>
-
+  <article class="card">
+    <h1>Character 1 · Vanguard</h1>
+    <div class="media">
+      <img src="images/char1.png" alt="Character 1 portrait">
+    </div>
+    <p>A balanced fighter designed for new and experienced players. Use Vanguard when you want solid damage, reliable defense, and easy combo options.</p>
+    <ul class="stats">
+      <li><strong>Role:</strong> Fighter</li>
+      <li><strong>Difficulty:</strong> Easy</li>
+      <li><strong>Signature skill:</strong> Arc Strike</li>
+    </ul>
+    <a class="back" href="index.html">← Back to character select</a>
+  </article>
 </body>
 </html>
