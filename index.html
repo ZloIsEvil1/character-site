@@ -26,7 +26,7 @@
   }
 
   .wrapper {
-    width: min(1040px, 92vw);
+    width: min(1180px, 94vw);
     margin: 0 auto;
     padding: 44px 0 72px;
   }
@@ -49,7 +49,7 @@
   .profiles {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
   }
 
   .card {
@@ -57,41 +57,64 @@
     color: inherit;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 16px;
+    border-radius: 20px;
+    padding: 18px;
     display: grid;
-    grid-template-columns: 160px minmax(0, 1fr);
-    gap: 16px;
-    align-items: center;
-    transition: transform .22s ease, border-color .22s ease;
+    grid-template-columns: 310px minmax(0, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    min-height: 360px;
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
   }
 
   .card:hover,
   .card:focus-visible {
     transform: translateY(-3px);
     border-color: rgba(140, 201, 255, 0.8);
+    box-shadow: 0 8px 28px rgba(0,0,0,.35);
     outline: none;
   }
 
   .thumb {
     width: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255,255,255,0.06);
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.25);
+    padding: 8px;
   }
 
-  .name { margin: 0 0 8px; font-size: 1.2rem; font-weight: 650; }
-  .summary { margin: 0; color: var(--text-subtle); line-height: 1.45; }
+  .meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 6px 4px;
+  }
 
-  @media (max-width: 700px) {
+  .name {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+    font-weight: 700;
+  }
+
+  .sinker {
+    margin: 0;
+    color: #e5ecff;
+    line-height: 1.5;
+    font-size: 1.02rem;
+  }
+
+  @media (max-width: 880px) {
     .card {
       grid-template-columns: 1fr;
+      min-height: 0;
     }
 
     .thumb {
-      max-height: 300px;
+      min-height: 360px;
+      max-height: 520px;
     }
   }
 </style>
@@ -104,41 +127,41 @@
     <section class="profiles" aria-label="Character profiles">
       <a href="character1.html" class="card">
         <img class="thumb" src="images/char1.png" alt="Nerelía de los Navarén">
-        <div>
+        <div class="meta">
           <h2 class="name">Nerelía de los Navarén</h2>
-          <p class="summary">Rapier-wielding noble haunted by Delosa, a silent mirror spirit that never leaves her side.</p>
+          <p class="sinker">Rapier-wielding noble haunted by Delosa, a ghost that never leaves her side.</p>
         </div>
       </a>
 
       <a href="character2.html" class="card">
         <img class="thumb" src="images/char2.png" alt="Character 2">
-        <div>
+        <div class="meta">
           <h2 class="name">Character 2</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="sinker">A fast duelist profile focused on burst motion and aggressive pressure.</p>
         </div>
       </a>
 
       <a href="character3.html" class="card">
         <img class="thumb" src="images/char3.png" alt="Character 3">
-        <div>
+        <div class="meta">
           <h2 class="name">Character 3</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="sinker">A support profile centered on healing, buffs, and battlefield control.</p>
         </div>
       </a>
 
       <a href="character4.html" class="card">
         <img class="thumb" src="images/char4.png" alt="Character 4">
-        <div>
+        <div class="meta">
           <h2 class="name">Character 4</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="sinker">A precision long-range profile built for tactical positioning.</p>
         </div>
       </a>
 
       <a href="character5.html" class="card">
         <img class="thumb" src="images/char5.png" alt="Character 5">
-        <div>
+        <div class="meta">
           <h2 class="name">Character 5</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="sinker">A durable frontline profile focused on protection and control.</p>
         </div>
       </a>
     </section>
