@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nerelía de los Navarén</title>
+<title>Nerelía de los Navarén — NSFW Version</title>
 <style>
   :root {
     color-scheme: dark;
@@ -75,14 +75,7 @@
     font-size: 1.05rem;
   }
 
-  .hero-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .nsfw-toggle,
-  .relief-toggle {
+  .nsfw-toggle {
     padding: 8px 12px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -96,7 +89,30 @@
   }
 
   .nsfw-toggle:hover,
-  .nsfw-toggle:focus-visible,
+  .nsfw-toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .relief-toggle {
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--ghost);
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
   .relief-toggle:hover,
   .relief-toggle:focus-visible {
     background: rgba(255, 255, 255, 0.15);
@@ -106,7 +122,7 @@
   .layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(340px, 460px);
-    gap: 0;
+    gap: 28px;
   }
 
   .content { padding: 28px; }
@@ -123,7 +139,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: url("reliefs/char1relief.png") center center / auto 96% no-repeat;
+    background: url("reliefs/char1nsfw.png") center center / auto 96% no-repeat;
     transition: background-image 0.3s ease;
   }
 
@@ -171,26 +187,15 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
     padding: 14px;
-    margin: 0 0 14px;
+    margin: 0;
     background: rgba(6, 9, 17, 0.45);
   }
 
-  .backstory-card {
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .backstory-card:hover,
-  .backstory-card:focus-visible {
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-1px);
-    outline: none;
-  }
-
-  .backstory-card p {
-    margin: 0;
-    color: #eff3ff;
-    line-height: 1.65;
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
   }
 
   .modal-backdrop {
@@ -198,7 +203,7 @@
     position: fixed;
     inset: 0;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.78);
+    background: rgba(0, 0, 0, 0.75);
     align-items: center;
     justify-content: center;
     padding: 24px;
@@ -210,36 +215,35 @@
 
   .modal-panel {
     position: relative;
-    width: min(100%, 1100px);
-    max-height: min(90vh, 100%);
-    background: rgba(10, 14, 24, 0.98);
+    width: min(100%, 1200px);
+    max-height: min(95vh, 100%);
+    background: rgba(10, 14, 24, 0.96);
     border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+    padding: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
     overflow: auto;
   }
 
-  .modal-panel h2 {
-    margin-top: 0;
-  }
-
-  .modal-panel p {
-    margin: 0 0 1rem;
-    line-height: 1.8;
-    color: #eff3ff;
+  .modal-panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    border-radius: 14px;
+    object-fit: contain;
   }
 
   .modal-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 36px;
-    height: 36px;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
   }
 
@@ -247,6 +251,12 @@
   .modal-close:focus-visible {
     background: rgba(255, 255, 255, 0.18);
     outline: none;
+  }
+
+  @media (max-width: 900px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   ul {
@@ -303,7 +313,7 @@
       </div>
       <div class="hero-buttons">
         <button class="relief-toggle" type="button" id="reliefToggle" aria-label="Toggle Delosa view">Show Delosa</button>
-        <button class="nsfw-toggle" type="button" id="nsfwToggle">NSFW Version</button>
+        <button class="nsfw-toggle" type="button" id="safeToggle">Safe Version</button>
       </div>
     </header>
 
@@ -318,93 +328,109 @@
           <div class="item"><span class="label">Languages</span><div class="value">Common, Elvish, Draconic</div></div>
           <div class="item"><span class="label">Ambition</span><div class="value">Free herself of Delosa, the spirit that continually follows her.</div></div>
           <div class="item"><span class="label">Sexuality</span><div class="value">Feminine in nature — finsexuality.</div></div>
+          <div class="item"><span class="label">Kinklist</span><div class="value"><a href="#" class="kinklist-link">View kinklist</a></div></div>
         </div>
 
-        <div class="card">
-          <h2>Appearance</h2>
-          <ul>
-            <li>Height: 5'8"</li>
-            <li>Weight: 132 lbs</li>
-            <li>Skin: White</li>
-            <li>Eyes: Red</li>
-            <li>Long, pierced ears</li>
-            <li>Distinctive red coat</li>
-            <li>Carries a long, silvery rapier</li>
-            <li>Followed by a near-perfect naked copy of herself</li>
-          </ul>
-        </div>
+        <div class="cards-grid">
+          <div class="card">
+            <h2>Kinks</h2>
+            <ul>
+              <li>Pushy Doms</li>
+              <li>Dub-con</li>
+              <li>Nipple Play</li>
+              <li>Blindfolds</li>
+              <li>Ear Play</li>
+              <li>Double Penetration</li>
+              <li>Ghost</li>
+              <li>Femboys</li>
+              <li>Collars</li>
+              <li>Ownership</li>
+              <li>Public Play</li>
+              <li>Exhibitionism</li>
+              <li>Voyeurism</li>
+              <li>Anal</li>
+            </ul>
+          </div>
 
-        <div class="card">
-          <h2>Interests</h2>
-          <ul>
-            <li>Macabre themes and horror stories</li>
-            <li>Necromancy, ghosts, and haunted places</li>
-            <li>Makeup and presentation</li>
-            <li>Dueling</li>
-          </ul>
-        </div>
+          <div class="card">
+            <h2>Limits</h2>
+            <ul>
+              <li>No blood</li>
+              <li>No torture</li>
+              <li>No ageplay</li>
+              <li>No scat</li>
+              <li>No self-harm</li>
+              <li>No permanent damage</li>
+            </ul>
+          </div>
 
-        <div class="card backstory-card" role="button" tabindex="0" aria-expanded="false" aria-controls="backstoryModal">
-          <h2>Backstory</h2>
-          <p>Click to read Nerelía’s full backstory in a pop-out panel.</p>
-        </div>
-
-        <a class="back" href="index.html">← Back to profiles</a>
-
-        <div class="modal-backdrop" id="backstoryModal" aria-hidden="true">
-          <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="backstoryTitle">
-            <button class="modal-close" type="button" aria-label="Close backstory">×</button>
-            <h2 id="backstoryTitle">Backstory</h2>
-            <p>Nerelìa was born on a grave, her mother’s final breath as cold as the earth in the pouring rain. Whether by curse, coincidence, ill-fortune, or something far more sinister, <em>something</em> took notice.</p>
-            <p>She calls it Delosa.</p>
-            <p>It has no true shape, yet often follows in her footsteps and takes her form—nude, with red markings on its face. From her earliest memories it has followed behind her, neither warm nor cold. Others rarely see it, though animals often freeze.</p>
-            <p>It whispers to her in her own cadence and pitch. Its suggestions are not cruel, only pragmatic: a cold, grinding calculus. On matters of survival, it is too often right.</p>
-            <p>She moves through the world with red eyes that hold too steady, a half-smile arriving a beat too late for comfort, and a habit of offering solutions that reveal how quickly her mind has already walked into darkness. She does not mean to unsettle people. She simply grew up where death was a neighbor and never learned to pretend otherwise.</p>
-            <p>Behind Delosa’s usefulness lingers the question she has not asked aloud: why her? What was in that grave? What bargain—if any—was struck the night she was born, slick and screaming, into soil already claimed? The answer is her freedom, and so she walks.</p>
+          <div class="card">
+            <h2>Dislikes</h2>
+            <ul>
+              <li>Nags</li>
+              <li>Cold, wet environments</li>
+              <li>Being ignored</li>
+              <li>People who disrespect Delosa</li>
+              <li>Weak, indecisive partners</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <aside class="relief" aria-label="Nerelía full-body relief artwork"></aside>
+      <aside class="relief" aria-label="Nerelía full-body relief artwork (NSFW)"></aside>
     </div>
   </article>
 
+  <div class="modal-backdrop" id="kinklistModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Kinklist preview">
+      <button class="modal-close" type="button" aria-label="Close">×</button>
+      <img id="kinklistImage" alt="Kinklist preview" src="" />
+    </div>
+  </div>
+
   <script>
-    const backstoryCard = document.querySelector('.backstory-card');
-    const backstoryModal = document.getElementById('backstoryModal');
-    const closeModal = backstoryModal.querySelector('.modal-close');
+    const kinklistLink = document.querySelector('.kinklist-link');
+    const kinklistModal = document.getElementById('kinklistModal');
+    const kinklistImage = document.getElementById('kinklistImage');
+    const closeButton = kinklistModal.querySelector('.modal-close');
+    const kinklistUrl = 'https://media.discordapp.net/attachments/1334317944670261341/1495329813794390076/kinklist_1.png?ex=69e72b69&is=69e5d9e9&hm=141b79d09bc10ba2954a1b0ae23f1643ac7b330eb6685f019287c6a10c5b8020&=&format=webp&quality=lossless';
 
-    function openBackstory() {
-      backstoryModal.classList.add('active');
-      backstoryModal.removeAttribute('aria-hidden');
-      backstoryCard.setAttribute('aria-expanded', 'true');
+    function openKinklist() {
+      kinklistImage.src = kinklistUrl;
+      kinklistModal.classList.add('active');
+      kinklistModal.removeAttribute('aria-hidden');
     }
 
-    function closeBackstory() {
-      backstoryModal.classList.remove('active');
-      backstoryModal.setAttribute('aria-hidden', 'true');
-      backstoryCard.setAttribute('aria-expanded', 'false');
+    function closeKinklist() {
+      kinklistModal.classList.remove('active');
+      kinklistModal.setAttribute('aria-hidden', 'true');
+      kinklistImage.src = '';
     }
 
-    backstoryCard.addEventListener('click', openBackstory);
-    backstoryCard.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openBackstory();
-      }
+    kinklistLink.addEventListener('click', event => {
+      event.preventDefault();
+      openKinklist();
     });
 
-    closeModal.addEventListener('click', closeBackstory);
-    backstoryModal.addEventListener('click', event => {
-      if (event.target === backstoryModal) {
-        closeBackstory();
+    closeButton.addEventListener('click', closeKinklist);
+    kinklistModal.addEventListener('click', event => {
+      if (event.target === kinklistModal) {
+        closeKinklist();
       }
     });
 
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && backstoryModal.classList.contains('active')) {
-        closeBackstory();
+      if (event.key === 'Escape' && kinklistModal.classList.contains('active')) {
+        closeKinklist();
       }
+    });
+
+    const safeToggle = document.getElementById('safeToggle');
+    safeToggle.addEventListener('click', () => {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'hornetcharacter1.html';
+      }, 300);
     });
 
     const reliefToggle = document.getElementById('reliefToggle');
@@ -415,14 +441,6 @@
       isDelosView = !isDelosView;
       relief.classList.toggle('delosa', isDelosView);
       reliefToggle.textContent = isDelosView ? 'Show Nerelía' : 'Show Delosa';
-    });
-
-    const nsfwToggle = document.getElementById('nsfwToggle');
-    nsfwToggle.addEventListener('click', () => {
-      document.body.classList.add('fade-out');
-      setTimeout(() => {
-        window.location.href = 'character1-nsfw.html';
-      }, 300);
     });
   </script>
 </body>

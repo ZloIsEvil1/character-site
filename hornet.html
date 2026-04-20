@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Character Profiles</title>
+<title>Hornet's Characters</title>
 <style>
   :root {
     color-scheme: dark;
@@ -15,7 +15,6 @@
   }
 
   * { box-sizing: border-box; }
-
   body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -29,6 +28,13 @@
     width: min(1040px, 92vw);
     margin: 0 auto;
     padding: 44px 0 72px;
+  }
+
+  a.home-link {
+    color: #aad4ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
   }
 
   h1 {
@@ -100,35 +106,51 @@
 </head>
 <body>
   <main class="wrapper">
-    <h1>Character Profiles</h1>
-    <p class="subtitle">A personal gallery for my original characters.</p>
+    <a class="home-link" href="index.html">← Back to landing page</a>
+    <h1>Hornet's Characters</h1>
+    <p class="subtitle">Browse the current Hornet character collection.</p>
 
-    <section class="profiles" aria-label="Character sections">
-      <a href="hornet.html" class="card">
-        <img class="thumb" src="images/char1.png" alt="Hornet's Characters">
+    <section class="profiles" aria-label="Hornet character profiles">
+      <a href="hornetcharacter1.html" class="card">
+        <img class="thumb" src="images/char1.png" alt="Nerelía de los Navarén">
         <div>
-          <h2 class="name">Hornet's Characters</h2>
-          <p class="summary">Browse Hornet's current collection of profiles and character pages.</p>
+          <h2 class="name">Nerelía de los Navarén</h2>
+          <p class="summary">Rapier-wielding noble haunted by Delosa, a silent mirror spirit that never leaves her side.</p>
         </div>
       </a>
 
-      <a href="foxxy.html" class="card">
-        <img class="thumb" src="images/char2.png" alt="Foxxy's Characters">
+      <a href="hornetcharacter2.html" class="card">
+        <img class="thumb" src="images/char2.png" alt="Character 2">
         <div>
-          <h2 class="name">Foxxy's Characters</h2>
-          <p class="summary">Coming soon: Foxxy's own character gallery will be available here.</p>
+          <h2 class="name">Character 2</h2>
+          <p class="summary">Under construction!</p>
+        </div>
+      </a>
+
+      <a href="hornetcharacter3.html" class="card">
+        <img class="thumb" src="images/char3.png" alt="Character 3">
+        <div>
+          <h2 class="name">Character 3</h2>
+          <p class="summary">Under construction!</p>
+        </div>
+      </a>
+
+      <a href="hornetcharacter4.html" class="card">
+        <img class="thumb" src="images/char4.png" alt="Character 4">
+        <div>
+          <h2 class="name">Character 4</h2>
+          <p class="summary">Under construction!</p>
+        </div>
+      </a>
+
+      <a href="hornetcharacter5.html" class="card">
+        <img class="thumb" src="images/char5.png" alt="Character 5">
+        <div>
+          <h2 class="name">Character 5</h2>
+          <p class="summary">Under construction!</p>
         </div>
       </a>
     </section>
   </main>
-
-  <script>
-    // Hide images that fail to load
-    document.querySelectorAll('.thumb').forEach(img => {
-      img.addEventListener('error', () => {
-        img.style.display = 'none';
-      });
-    });
-  </script>
 </body>
 </html>
