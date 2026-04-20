@@ -12,12 +12,22 @@
   .header h1 { margin: 0; }
   .nsfw-toggle { padding: 8px 12px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 8px; color: #ffab8c; text-decoration: none; font-size: 0.9rem; }
   .nsfw-toggle:hover { background: rgba(255,255,255,.15); }
-  .layout { display:grid; grid-template-columns: minmax(0,1fr) minmax(320px,440px); }
+  .layout { display:grid; grid-template-columns: minmax(0,1fr) minmax(320px,440px); gap: 28px; }
   .content { padding:26px; }
   .portrait { height:260px; border-radius:14px; background:linear-gradient(145deg,#db5e35,#8d244d); display:grid; place-items:center; font-size:3rem; border:1px solid rgba(255,255,255,.2); }
   .relief { position:relative; border-left:1px solid rgba(255,255,255,.16); background:linear-gradient(to left, rgba(12,12,16,.82), rgba(12,12,16,.35)); min-height:720px; overflow:hidden; }
   .relief::after { content:""; position:absolute; inset:0; background:url('reliefs/char2nsfw.png') center center/auto 96% no-repeat; }
+  .content-card { border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px; margin:0 0 14px; background:rgba(6,9,17,.45); }
+  .cards-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:14px; }
+  .cards-grid .content-card { margin:0; }
   .back { display:inline-block; margin-top:16px; color:#ffab8c; border:1px solid #ffab8c; padding:10px 16px; border-radius:10px; text-decoration:none; }
+  .modal-backdrop { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.78); align-items:center; justify-content:center; padding:24px; }
+  .modal-backdrop.active { display:flex; }
+  .modal-panel { position:relative; width:min(100%, 1100px); max-height:min(90vh, 100%); background:rgba(10,14,24,.98); border-radius:18px; padding:24px; box-shadow:0 24px 70px rgba(0,0,0,.5); overflow:auto; }
+  .modal-close { position:absolute; top:16px; right:16px; width:36px; height:36px; border:none; border-radius:50%; background:rgba(255,255,255,.1); color:white; font-size:1.3rem; cursor:pointer; }
+  .modal-close:hover { background:rgba(255,255,255,.18); }
+  h2 { margin:0 0 12px; font-size:1.35rem; color:#fff; }
+  ul { margin:8px 0 0; padding-left:18px; line-height:1.55; }
   @media (max-width:860px){ .header { flex-direction: column; gap: 12px; align-items: flex-start; } .layout{grid-template-columns:1fr;} .relief{border-left:0;border-top:1px solid rgba(255,255,255,.16); min-height:500px; background:linear-gradient(to top, rgba(12,12,16,.82), rgba(12,12,16,.35));} .relief::after{background-size:auto 94%; background-position:center center;} }
 </style>
 </head>
@@ -31,6 +41,22 @@
       <section class="content">
         <div class="portrait" aria-hidden="true">B2</div>
         <p>A high-speed duelist built for aggressive playstyles. Great at quick entries, burst combos, and evasive movement.</p>
+
+        <div class="cards-grid">
+          <div class="content-card">
+            <h2>Kinks</h2>
+            <ul></ul>
+          </div>
+          <div class="content-card">
+            <h2>Limits</h2>
+            <ul></ul>
+          </div>
+          <div class="content-card">
+            <h2>Dislikes</h2>
+            <ul></ul>
+          </div>
+        </div>
+
         <a class="back" href="index.html">← Back to profiles</a>
       </section>
       <aside class="relief" aria-label="Character 2 full-body relief artwork (NSFW)"></aside>
