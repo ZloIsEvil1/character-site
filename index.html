@@ -114,7 +114,7 @@
         <img class="thumb" src="images/char2.png" alt="Character 2">
         <div>
           <h2 class="name">Character 2</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="summary">Under construction!</p>
         </div>
       </a>
 
@@ -122,7 +122,7 @@
         <img class="thumb" src="images/char3.png" alt="Character 3">
         <div>
           <h2 class="name">Character 3</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="summary">Under construction!</p>
         </div>
       </a>
 
@@ -130,7 +130,7 @@
         <img class="thumb" src="images/char4.png" alt="Character 4">
         <div>
           <h2 class="name">Character 4</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="summary">Under construction!</p>
         </div>
       </a>
 
@@ -138,10 +138,19 @@
         <img class="thumb" src="images/char5.png" alt="Character 5">
         <div>
           <h2 class="name">Character 5</h2>
-          <p class="summary">Profile page ready for customization.</p>
+          <p class="summary">Under construction!</p>
         </div>
       </a>
     </section>
   </main>
+
+  <script>
+    // Hide images that fail to load
+    document.querySelectorAll('.thumb').forEach(img => {
+      img.addEventListener('error', () => {
+        img.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>
