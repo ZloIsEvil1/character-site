@@ -59,8 +59,9 @@
     border: 1px solid var(--border);
     border-radius: 0;
     display: grid;
-    grid-template-columns: minmax(0, 17fr) minmax(240px, 13fr);
-    height: 1300px;
+    --panel-h: 900px;
+    grid-template-columns: calc(var(--panel-h) * 17 / 13) minmax(240px, 1fr);
+    height: var(--panel-h);
     overflow: hidden;
     transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
   }
