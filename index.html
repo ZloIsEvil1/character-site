@@ -50,6 +50,77 @@
     position: relative;
     border: 1px solid rgba(255,255,255,.16);
     background: rgba(0,0,0,.2);
+<<<<<<< codex/task-title-i1nprs
+    padding: 22px 64px;
+    overflow: hidden;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 40px;
+    height: 72px;
+    border: 1px solid rgba(255,255,255,.28);
+    background: rgba(7,10,18,.72);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .arrow:hover,
+  .arrow:focus-visible {
+    border-color: rgba(140, 201, 255, 0.9);
+    background: rgba(15,22,42,.9);
+    outline: none;
+  }
+
+  .arrow.prev { left: 14px; }
+  .arrow.next { right: 14px; }
+
+  .track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+
+  .track::-webkit-scrollbar { height: 12px; }
+  .track::-webkit-scrollbar-thumb { background: rgba(255,255,255,.28); }
+
+  .card {
+    text-decoration: none;
+    color: inherit;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(0, 17fr) minmax(220px, 13fr);
+    height: clamp(420px, 52vw, 560px);
+    overflow: hidden;
+    scroll-snap-align: center;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(140, 201, 255, 0.9);
+    outline: none;
+  }
+
+  .thumb-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.25);
+    border-right: 1px solid rgba(255,255,255,.12);
+=======
     padding: 22px;
     overflow: hidden;
   }
@@ -91,13 +162,19 @@
     transform: translateY(-3px);
     border-color: rgba(140, 201, 255, 0.9);
     outline: none;
+>>>>>>> main
   }
 
   .thumb {
     width: 100%;
     height: 100%;
+<<<<<<< codex/task-title-i1nprs
+    object-fit: contain;
+    object-position: center;
+=======
     object-fit: cover;
     object-position: center top;
+>>>>>>> main
     display: block;
   }
 
@@ -107,7 +184,10 @@
     justify-content: center;
     gap: 14px;
     padding: 20px 22px;
+<<<<<<< codex/task-title-i1nprs
+=======
     border-left: 1px solid rgba(255,255,255,.16);
+>>>>>>> main
   }
 
   .name {
@@ -125,6 +205,13 @@
   }
 
   @media (max-width: 980px) {
+<<<<<<< codex/task-title-i1nprs
+    .wheel { padding: 16px 52px; }
+    .track { grid-auto-columns: 82vw; }
+    .card { grid-template-columns: 1fr; height: auto; }
+    .thumb-wrap { aspect-ratio: 17 / 13; }
+    .arrow { height: 58px; width: 36px; }
+=======
     .track {
       grid-auto-columns: 85vw;
     }
@@ -143,18 +230,33 @@
       border-left: 0;
       border-top: 1px solid rgba(255,255,255,.16);
     }
+>>>>>>> main
   }
 </style>
 </head>
 <body>
   <main class="wrapper">
     <h1>Character Profiles</h1>
+<<<<<<< codex/task-title-i1nprs
+    <p class="subtitle">Use the side arrows (or swipe/scroll) to move through the character wheel.</p>
+
+    <section class="wheel" aria-label="Character wheel">
+      <button class="arrow prev" type="button" aria-label="Scroll left">‹</button>
+      <button class="arrow next" type="button" aria-label="Scroll right">›</button>
+
+      <div class="track" id="character-track">
+        <a href="character1.html" class="card">
+          <div class="thumb-wrap">
+            <img class="thumb" src="images/char1.png" alt="Nerelía de los Navarén">
+          </div>
+=======
     <p class="subtitle">Swipe or scroll sideways through the character wheel and open a profile.</p>
 
     <section class="wheel" aria-label="Character wheel">
       <div class="track">
         <a href="character1.html" class="card">
           <img class="thumb" src="images/char1.png" alt="Nerelía de los Navarén">
+>>>>>>> main
           <div class="meta">
             <h2 class="name">Nerelía de los Navarén</h2>
             <p class="sinker">Rapier-wielding noble haunted by Delosa, a ghost that never leaves her side.</p>
@@ -162,7 +264,13 @@
         </a>
 
         <a href="character2.html" class="card">
+<<<<<<< codex/task-title-i1nprs
+          <div class="thumb-wrap">
+            <img class="thumb" src="images/char2.png" alt="Character 2">
+          </div>
+=======
           <img class="thumb" src="images/char2.png" alt="Character 2">
+>>>>>>> main
           <div class="meta">
             <h2 class="name">Character 2</h2>
             <p class="sinker">A fast duelist profile focused on burst motion and aggressive pressure.</p>
@@ -170,7 +278,13 @@
         </a>
 
         <a href="character3.html" class="card">
+<<<<<<< codex/task-title-i1nprs
+          <div class="thumb-wrap">
+            <img class="thumb" src="images/char3.png" alt="Character 3">
+          </div>
+=======
           <img class="thumb" src="images/char3.png" alt="Character 3">
+>>>>>>> main
           <div class="meta">
             <h2 class="name">Character 3</h2>
             <p class="sinker">A support profile centered on healing, buffs, and battlefield control.</p>
@@ -178,7 +292,13 @@
         </a>
 
         <a href="character4.html" class="card">
+<<<<<<< codex/task-title-i1nprs
+          <div class="thumb-wrap">
+            <img class="thumb" src="images/char4.png" alt="Character 4">
+          </div>
+=======
           <img class="thumb" src="images/char4.png" alt="Character 4">
+>>>>>>> main
           <div class="meta">
             <h2 class="name">Character 4</h2>
             <p class="sinker">A precision long-range profile built for tactical positioning.</p>
@@ -186,7 +306,13 @@
         </a>
 
         <a href="character5.html" class="card">
+<<<<<<< codex/task-title-i1nprs
+          <div class="thumb-wrap">
+            <img class="thumb" src="images/char5.png" alt="Character 5">
+          </div>
+=======
           <img class="thumb" src="images/char5.png" alt="Character 5">
+>>>>>>> main
           <div class="meta">
             <h2 class="name">Character 5</h2>
             <p class="sinker">A durable frontline profile focused on protection and control.</p>
@@ -195,5 +321,34 @@
       </div>
     </section>
   </main>
+<<<<<<< codex/task-title-i1nprs
+
+  <script>
+    const track = document.getElementById('character-track');
+    const prev = document.querySelector('.arrow.prev');
+    const next = document.querySelector('.arrow.next');
+
+    const step = () => track.clientWidth;
+
+    prev.addEventListener('click', () => {
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', () => {
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        track.scrollBy({ left: -step(), behavior: 'smooth' });
+      }
+
+      if (event.key === 'ArrowRight') {
+        track.scrollBy({ left: step(), behavior: 'smooth' });
+      }
+    });
+  </script>
+=======
+>>>>>>> main
 </body>
 </html>
