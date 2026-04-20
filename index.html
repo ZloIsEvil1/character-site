@@ -2,91 +2,250 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Character Select</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Profiles</title>
 <style>
+  :root {
+    color-scheme: dark;
+    --bg-top: #090a14;
+    --bg-bottom: #121426;
+    --panel: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.2);
+    --text-subtle: #cdd5f2;
+  }
+
+  * { box-sizing: border-box; }
+
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1a1a2e, #16213e);
-    color: white;
-    text-align: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at 15% 0%, rgba(140, 201, 255, 0.16), transparent 42%),
+                linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+    color: #fff;
+  }
+
+  .wrapper {
+    width: min(1380px, 94vw);
+    margin: 0 auto;
+    padding: 42px 0 62px;
   }
 
   h1 {
-    margin: 30px 0;
-    font-size: 2.5em;
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    text-align: center;
   }
 
-  .container {
+  .subtitle {
+    text-align: center;
+    color: var(--text-subtle);
+    max-width: 760px;
+    margin: 14px auto 28px;
+    line-height: 1.6;
+  }
+
+  .carousel {
+    position: relative;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(0,0,0,.24);
+    padding: 22px 64px;
+    overflow: hidden;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 42px;
+    height: 76px;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(6, 10, 20, .8);
+    color: #fff;
+    font-size: 1.75rem;
+    cursor: pointer;
+  }
+
+  .arrow.prev { left: 12px; }
+  .arrow.next { right: 12px; }
+
+  .arrow:hover,
+  .arrow:focus-visible {
+    border-color: rgba(140, 201, 255, 0.95);
+    outline: none;
+  }
+
+  .viewport {
+    overflow: hidden;
+  }
+
+  .slides {
     display: flex;
-    flex-direction: column;   /* 🔥 vertical stack */
-    align-items: center;
-    gap: 40px;
-    padding-bottom: 50px;
-  }
-
-  .character {
-    text-decoration: none;
-    color: white;
-    width: 500px; /* 🔥 controls overall size */
-    transition: transform 0.3s ease;
-  }
-
-  .character img {
+    transition: transform .35s ease;
     width: 100%;
-    height: auto;  /* ✅ keeps aspect ratio */
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
   }
 
-  .character:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px #00f7ff;
+  .slide {
+    min-width: 100%;
+  }
+
+  .panel {
+    text-decoration: none;
+    color: inherit;
+    display: grid;
+    grid-template-columns: minmax(0, 17fr) minmax(260px, 13fr);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    height: clamp(440px, 55vw, 600px);
+  }
+
+  .image {
+    display: grid;
+    place-items: center;
+    background: rgba(0,0,0,.22);
+    border-right: 1px solid rgba(255,255,255,.12);
+    overflow: hidden;
+  }
+
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 24px;
   }
 
   .name {
-    margin-top: 12px;
-    font-size: 1.4em;
-    letter-spacing: 1px;
+    margin: 0;
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.2;
   }
 
+  .sinker {
+    margin: 0;
+    color: #e5ecff;
+    line-height: 1.5;
+  }
+
+  .counter {
+    margin-top: 12px;
+    text-align: center;
+    color: var(--text-subtle);
+    font-size: .95rem;
+  }
+
+  @media (max-width: 980px) {
+    .carousel { padding: 16px 52px; }
+    .panel { grid-template-columns: 1fr; height: auto; }
+    .image { aspect-ratio: 17 / 13; }
+    .arrow { width: 36px; height: 58px; }
+  }
 </style>
 </head>
-
 <body>
+  <main class="wrapper">
+    <h1>Character Profiles</h1>
+    <p class="subtitle">Use the side arrows (or keyboard arrows) to browse one character at a time.</p>
 
-<h1>Select Your Character</h1>
+    <section class="carousel" aria-label="Character carousel">
+      <button class="arrow prev" type="button" aria-label="Previous character">‹</button>
+      <button class="arrow next" type="button" aria-label="Next character">›</button>
 
-<div class="container">
+      <div class="viewport">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <a href="character1.html" class="panel">
+              <div class="image"><img src="images/char1.png" alt="Nerelía de los Navarén"></div>
+              <div class="meta">
+                <h2 class="name">Nerelía de los Navarén</h2>
+                <p class="sinker">Rapier-wielding noble haunted by Delosa, a ghost that never leaves her side.</p>
+              </div>
+            </a>
+          </div>
 
-  <a href="character1.html" class="character">
-    <img src="images/char1.png">
-    <div class="name">Character 1</div>
-  </a>
+          <div class="slide">
+            <a href="character2.html" class="panel">
+              <div class="image"><img src="images/char2.png" alt="Character 2"></div>
+              <div class="meta">
+                <h2 class="name">Character 2</h2>
+                <p class="sinker">A fast duelist profile focused on burst motion and aggressive pressure.</p>
+              </div>
+            </a>
+          </div>
 
-  <a href="character2.html" class="character">
-    <img src="images/char2.png">
-    <div class="name">Character 2</div>
-  </a>
+          <div class="slide">
+            <a href="character3.html" class="panel">
+              <div class="image"><img src="images/char3.png" alt="Character 3"></div>
+              <div class="meta">
+                <h2 class="name">Character 3</h2>
+                <p class="sinker">A support profile centered on healing, buffs, and battlefield control.</p>
+              </div>
+            </a>
+          </div>
 
-  <a href="character3.html" class="character">
-    <img src="images/char3.png">
-    <div class="name">Character 3</div>
-  </a>
+          <div class="slide">
+            <a href="character4.html" class="panel">
+              <div class="image"><img src="images/char4.png" alt="Character 4"></div>
+              <div class="meta">
+                <h2 class="name">Character 4</h2>
+                <p class="sinker">A precision long-range profile built for tactical positioning.</p>
+              </div>
+            </a>
+          </div>
 
-  <a href="character4.html" class="character">
-    <img src="images/char4.png">
-    <div class="name">Character 4</div>
-  </a>
+          <div class="slide">
+            <a href="character5.html" class="panel">
+              <div class="image"><img src="images/char5.png" alt="Character 5"></div>
+              <div class="meta">
+                <h2 class="name">Character 5</h2>
+                <p class="sinker">A durable frontline profile focused on protection and control.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
 
-  <a href="character5.html" class="character">
-    <img src="images/char5.png">
-    <div class="name">Character 5</div>
-  </a>
+      <p class="counter" id="counter">1 / 5</p>
+    </section>
+  </main>
 
-</div>
+  <script>
+    const slides = document.getElementById('slides');
+    const total = slides.children.length;
+    const counter = document.getElementById('counter');
+    const prev = document.querySelector('.arrow.prev');
+    const next = document.querySelector('.arrow.next');
 
+    let index = 0;
+
+    function render() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      counter.textContent = `${index + 1} / ${total}`;
+    }
+
+    function move(delta) {
+      index = (index + delta + total) % total;
+      render();
+    }
+
+    prev.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') move(-1);
+      if (event.key === 'ArrowRight') move(1);
+    });
+
+    render();
+  </script>
 </body>
 </html>
