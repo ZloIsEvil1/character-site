@@ -12,7 +12,6 @@
     --panel: rgba(255, 255, 255, 0.06);
     --border: rgba(255, 255, 255, 0.14);
     --text-subtle: #cdd5f2;
-    --accent: #8cc9ff;
   }
 
   * { box-sizing: border-box; }
@@ -27,7 +26,7 @@
   }
 
   .wrapper {
-    width: min(1120px, 92vw);
+    width: min(1040px, 92vw);
     margin: 0 auto;
     padding: 44px 0 72px;
   }
@@ -43,14 +42,14 @@
     text-align: center;
     color: var(--text-subtle);
     max-width: 760px;
-    margin: 14px auto 40px;
+    margin: 14px auto 36px;
     line-height: 1.6;
   }
 
   .profiles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .card {
@@ -59,73 +58,88 @@
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 18px;
-    padding: 18px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
     transition: transform .22s ease, border-color .22s ease;
   }
 
   .card:hover,
   .card:focus-visible {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     border-color: rgba(140, 201, 255, 0.8);
     outline: none;
   }
 
-  .portrait {
+  .thumb {
     width: 100%;
     aspect-ratio: 4/5;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,.18);
-    display: grid;
-    place-items: end center;
-    padding-bottom: 12px;
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
-    text-shadow: 0 2px 8px rgba(0,0,0,.45);
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,0.06);
   }
 
-  .nerelia { background: linear-gradient(150deg, #921f2e, #1b2f6a 58%, #111); }
-  .c2 { background: linear-gradient(150deg, #753422, #3c1824); }
-  .c3 { background: linear-gradient(150deg, #1f6a58, #163746); }
-  .c4 { background: linear-gradient(150deg, #4e3b9e, #1f1a40); }
-  .c5 { background: linear-gradient(150deg, #8a6a23, #30240e); }
+  .name { margin: 0 0 8px; font-size: 1.2rem; font-weight: 650; }
+  .summary { margin: 0; color: var(--text-subtle); line-height: 1.45; }
 
-  .name { margin: 14px 0 8px; font-size: 1.15rem; font-weight: 650; }
-  .summary { margin: 0; color: var(--text-subtle); line-height: 1.45; font-size: .95rem; }
+  @media (max-width: 700px) {
+    .card {
+      grid-template-columns: 1fr;
+    }
+
+    .thumb {
+      max-height: 300px;
+    }
+  }
 </style>
 </head>
 <body>
   <main class="wrapper">
     <h1>Character Profiles</h1>
-    <p class="subtitle">A personal gallery for my original characters. Each profile is designed to highlight identity, history, and personality rather than a game-style selection screen.</p>
+    <p class="subtitle">A personal gallery for my original characters.</p>
 
     <section class="profiles" aria-label="Character profiles">
       <a href="character1.html" class="card">
-        <div class="portrait nerelia" aria-hidden="true">N</div>
-        <h2 class="name">Nerelía de los Navarén</h2>
-        <p class="summary">Rapier-wielding noble haunted by Delosa, a silent mirror spirit that never leaves her side.</p>
+        <img class="thumb" src="images/char1.png" alt="Nerelía de los Navarén">
+        <div>
+          <h2 class="name">Nerelía de los Navarén</h2>
+          <p class="summary">Rapier-wielding noble haunted by Delosa, a silent mirror spirit that never leaves her side.</p>
+        </div>
       </a>
 
       <a href="character2.html" class="card">
-        <div class="portrait c2" aria-hidden="true">B2</div>
-        <h2 class="name">Character 2</h2>
-        <p class="summary">Profile page ready for customization.</p>
+        <img class="thumb" src="images/char2.png" alt="Character 2">
+        <div>
+          <h2 class="name">Character 2</h2>
+          <p class="summary">Profile page ready for customization.</p>
+        </div>
       </a>
 
       <a href="character3.html" class="card">
-        <div class="portrait c3" aria-hidden="true">C3</div>
-        <h2 class="name">Character 3</h2>
-        <p class="summary">Profile page ready for customization.</p>
+        <img class="thumb" src="images/char3.png" alt="Character 3">
+        <div>
+          <h2 class="name">Character 3</h2>
+          <p class="summary">Profile page ready for customization.</p>
+        </div>
       </a>
 
       <a href="character4.html" class="card">
-        <div class="portrait c4" aria-hidden="true">D4</div>
-        <h2 class="name">Character 4</h2>
-        <p class="summary">Profile page ready for customization.</p>
+        <img class="thumb" src="images/char4.png" alt="Character 4">
+        <div>
+          <h2 class="name">Character 4</h2>
+          <p class="summary">Profile page ready for customization.</p>
+        </div>
       </a>
 
       <a href="character5.html" class="card">
-        <div class="portrait c5" aria-hidden="true">E5</div>
-        <h2 class="name">Character 5</h2>
-        <p class="summary">Profile page ready for customization.</p>
+        <img class="thumb" src="images/char5.png" alt="Character 5">
+        <div>
+          <h2 class="name">Character 5</h2>
+          <p class="summary">Profile page ready for customization.</p>
+        </div>
       </a>
     </section>
   </main>
