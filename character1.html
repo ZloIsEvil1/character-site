@@ -59,18 +59,25 @@
 
   .layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 460px);
     gap: 0;
   }
 
   .content { padding: 28px; }
 
   .relief {
+    position: relative;
     border-left: 1px solid var(--line);
-    min-height: 100%;
-    background:
-      linear-gradient(to left, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25)),
-      url("reliefs/char1relief.png") right bottom / contain no-repeat;
+    min-height: 760px;
+    background: linear-gradient(to left, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25));
+    overflow: hidden;
+  }
+
+  .relief::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("reliefs/char1relief.png") center center / auto 96% no-repeat;
   }
 
   h2 {
@@ -146,10 +153,13 @@
     .relief {
       border-left: 0;
       border-top: 1px solid var(--line);
-      min-height: 420px;
-      background:
-        linear-gradient(to top, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25)),
-        url("reliefs/char1relief.png") center bottom / contain no-repeat;
+      min-height: 520px;
+      background: linear-gradient(to top, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25));
+    }
+
+    .relief::after {
+      background-size: auto 94%;
+      background-position: center center;
     }
   }
 </style>

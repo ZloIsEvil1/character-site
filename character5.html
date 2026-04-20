@@ -8,12 +8,13 @@
   :root { color-scheme: dark; }
   body { margin:0; min-height:100vh; display:grid; place-items:center; padding:28px; font-family:"Segoe UI", Arial, sans-serif; color:white; background: radial-gradient(circle at top right, rgba(255, 202, 88, 0.2), transparent 45%), #2f2712; }
   .card { width:min(1080px,95vw); background:#4a3b1d; border:1px solid rgba(255,255,255,.16); border-radius:18px; overflow:hidden; }
-  .layout { display:grid; grid-template-columns: minmax(0,1fr) minmax(260px,340px); }
+  .layout { display:grid; grid-template-columns: minmax(0,1fr) minmax(320px,440px); }
   .content { padding:26px; }
   .portrait { height:260px; border-radius:14px; background:linear-gradient(145deg,#e0ab35,#855d1f); display:grid; place-items:center; font-size:3rem; border:1px solid rgba(255,255,255,.2); }
-  .relief { border-left:1px solid rgba(255,255,255,.16); background:linear-gradient(to left, rgba(22,16,8,.85), rgba(22,16,8,.3)), url('reliefs/char5relief.png') right bottom/contain no-repeat; min-height:100%; }
+  .relief { position:relative; border-left:1px solid rgba(255,255,255,.16); background:linear-gradient(to left, rgba(12,12,16,.82), rgba(12,12,16,.35)); min-height:720px; overflow:hidden; }
+  .relief::after { content:""; position:absolute; inset:0; background:url('reliefs/char5relief.png') center center/auto 96% no-repeat; }
   .back { display:inline-block; margin-top:16px; color:#ffe1a6; border:1px solid #ffe1a6; padding:10px 16px; border-radius:10px; text-decoration:none; }
-  @media (max-width:860px){ .layout{grid-template-columns:1fr;} .relief{border-left:0;border-top:1px solid rgba(255,255,255,.16); min-height:380px; background:linear-gradient(to top, rgba(22,16,8,.85), rgba(22,16,8,.3)), url('reliefs/char5relief.png') center bottom/contain no-repeat;} }
+  @media (max-width:860px){ .layout{grid-template-columns:1fr;} .relief{border-left:0;border-top:1px solid rgba(255,255,255,.16); min-height:500px; background:linear-gradient(to top, rgba(12,12,16,.82), rgba(12,12,16,.35));} .relief::after{background-size:auto 94%; background-position:center center;} }
 </style>
 </head>
 <body>
