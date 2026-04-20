@@ -10,8 +10,6 @@
     --ink: #f3f6ff;
     --paper: rgba(13, 18, 35, 0.86);
     --line: rgba(255, 255, 255, 0.2);
-    --red: #b32239;
-    --blue: #264a99;
     --ghost: #dce6ff;
     --black: #070a11;
   }
@@ -31,7 +29,7 @@
   }
 
   .profile {
-    width: min(980px, 96vw);
+    width: min(1120px, 96vw);
     margin: 0 auto;
     background: var(--paper);
     border: 1px solid var(--line);
@@ -61,15 +59,18 @@
 
   .layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(250px, 0.85fr);
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
     gap: 0;
   }
 
   .content { padding: 28px; }
-  .aside {
+
+  .relief {
     border-left: 1px solid var(--line);
-    padding: 28px;
-    background: rgba(255, 255, 255, 0.03);
+    min-height: 100%;
+    background:
+      linear-gradient(to left, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25)),
+      url("reliefs/char1relief.png") right bottom / contain no-repeat;
   }
 
   h2 {
@@ -112,7 +113,7 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
     padding: 14px;
-    margin-bottom: 14px;
+    margin: 0 0 14px;
     background: rgba(6, 9, 17, 0.45);
   }
 
@@ -140,9 +141,16 @@
     outline: none;
   }
 
-  @media (max-width: 820px) {
+  @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }
-    .aside { border-left: 0; border-top: 1px solid var(--line); }
+    .relief {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      min-height: 420px;
+      background:
+        linear-gradient(to top, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25)),
+        url("reliefs/char1relief.png") center bottom / contain no-repeat;
+    }
   }
 </style>
 </head>
@@ -166,18 +174,6 @@
           <div class="item"><span class="label">Sexuality</span><div class="value">Feminine in nature — finsexuality.</div></div>
         </div>
 
-        <h2>Backstory</h2>
-        <p class="backstory">Nerelìa was born on a grave, her mother’s final breath as cold as the earth in the pouring rain. Whether by curse, coincidence, ill-fortune, or something far more sinister, <em>something</em> took notice.</p>
-        <p class="backstory">She calls it Delosa.</p>
-        <p class="backstory">It has no true shape, yet often follows in her footsteps and takes her form—nude, with red markings on its face. From her earliest memories it has followed behind her, neither warm nor cold. Others rarely see it, though animals often freeze.</p>
-        <p class="backstory">It whispers to her in her own cadence and pitch. Its suggestions are not cruel, only pragmatic: a cold, grinding calculus. On matters of survival, it is too often right.</p>
-        <p class="backstory">She moves through the world with red eyes that hold too steady, a half-smile arriving a beat too late for comfort, and a habit of offering solutions that reveal how quickly her mind has already walked into darkness. She does not mean to unsettle people. She simply grew up where death was a neighbor and never learned to pretend otherwise.</p>
-        <p class="backstory">Behind Delosa’s usefulness lingers the question she has not asked aloud: why her? What was in that grave? What bargain—if any—was struck the night she was born, slick and screaming, into soil already claimed? The answer is her freedom, and so she walks.</p>
-
-        <a class="back" href="index.html">← Back to profiles</a>
-      </section>
-
-      <aside class="aside">
         <div class="card">
           <h2>Appearance</h2>
           <ul>
@@ -201,7 +197,19 @@
             <li>Dueling</li>
           </ul>
         </div>
-      </aside>
+
+        <h2>Backstory</h2>
+        <p class="backstory">Nerelìa was born on a grave, her mother’s final breath as cold as the earth in the pouring rain. Whether by curse, coincidence, ill-fortune, or something far more sinister, <em>something</em> took notice.</p>
+        <p class="backstory">She calls it Delosa.</p>
+        <p class="backstory">It has no true shape, yet often follows in her footsteps and takes her form—nude, with red markings on its face. From her earliest memories it has followed behind her, neither warm nor cold. Others rarely see it, though animals often freeze.</p>
+        <p class="backstory">It whispers to her in her own cadence and pitch. Its suggestions are not cruel, only pragmatic: a cold, grinding calculus. On matters of survival, it is too often right.</p>
+        <p class="backstory">She moves through the world with red eyes that hold too steady, a half-smile arriving a beat too late for comfort, and a habit of offering solutions that reveal how quickly her mind has already walked into darkness. She does not mean to unsettle people. She simply grew up where death was a neighbor and never learned to pretend otherwise.</p>
+        <p class="backstory">Behind Delosa’s usefulness lingers the question she has not asked aloud: why her? What was in that grave? What bargain—if any—was struck the night she was born, slick and screaming, into soil already claimed? The answer is her freedom, and so she walks.</p>
+
+        <a class="back" href="index.html">← Back to profiles</a>
+      </section>
+
+      <aside class="relief" aria-label="Nerelía full-body relief artwork"></aside>
     </div>
   </article>
 </body>

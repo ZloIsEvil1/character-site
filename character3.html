@@ -5,18 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Character 3</title>
 <style>
+  :root { color-scheme: dark; }
   body { margin:0; min-height:100vh; display:grid; place-items:center; padding:28px; font-family:"Segoe UI", Arial, sans-serif; color:white; background: radial-gradient(circle at top right, rgba(100, 234, 190, 0.2), transparent 45%), #102c31; }
-  .card { width:min(760px,95vw); background:#143f47; border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:26px; }
+  .card { width:min(1080px,95vw); background:#143f47; border:1px solid rgba(255,255,255,.16); border-radius:18px; overflow:hidden; }
+  .layout { display:grid; grid-template-columns: minmax(0,1fr) minmax(260px,340px); }
+  .content { padding:26px; }
   .portrait { height:260px; border-radius:14px; background:linear-gradient(145deg,#2f9e7d,#21567d); display:grid; place-items:center; font-size:3rem; border:1px solid rgba(255,255,255,.2); }
+  .relief { border-left:1px solid rgba(255,255,255,.16); background:linear-gradient(to left, rgba(8,18,24,.85), rgba(8,18,24,.3)), url('reliefs/char3relief.png') right bottom/contain no-repeat; min-height:100%; }
   .back { display:inline-block; margin-top:16px; color:#a0ffe5; border:1px solid #a0ffe5; padding:10px 16px; border-radius:10px; text-decoration:none; }
+  @media (max-width:860px){ .layout{grid-template-columns:1fr;} .relief{border-left:0;border-top:1px solid rgba(255,255,255,.16); min-height:380px; background:linear-gradient(to top, rgba(8,18,24,.85), rgba(8,18,24,.3)), url('reliefs/char3relief.png') center bottom/contain no-repeat;} }
 </style>
 </head>
 <body>
   <article class="card">
-    <h1>Character 3 · Pulse Medic</h1>
-    <div class="portrait" aria-hidden="true">C3</div>
-    <p>Support-oriented character focused on buffs, healing fields, and crowd control. Best used in team-based encounters.</p>
-    <a class="back" href="index.html">← Back to profiles</a>
+    <div class="layout">
+      <section class="content">
+        <h1>Character 3 · Pulse Medic</h1>
+        <div class="portrait" aria-hidden="true">C3</div>
+        <p>Support-oriented character focused on buffs, healing fields, and crowd control. Best used in team-based encounters.</p>
+        <a class="back" href="index.html">← Back to profiles</a>
+      </section>
+      <aside class="relief" aria-label="Character 3 full-body relief artwork"></aside>
+    </div>
   </article>
 </body>
 </html>
