@@ -3,145 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Character Select</title>
+<title>Character Profiles</title>
 <style>
   :root {
     color-scheme: dark;
-    --bg-top: #0f1023;
-    --bg-bottom: #181f42;
-    --card: rgba(255, 255, 255, 0.08);
-    --card-border: rgba(255, 255, 255, 0.18);
-    --accent: #66f0ff;
-    --text-subtle: #d4ddff;
+    --bg-top: #090a14;
+    --bg-bottom: #121426;
+    --panel: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.14);
+    --text-subtle: #cdd5f2;
+    --accent: #8cc9ff;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
     min-height: 100vh;
-    background: radial-gradient(circle at 20% 0%, #273178 0%, transparent 40%),
-                linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
-    color: white;
+    background: radial-gradient(circle at 15% 0%, rgba(140, 201, 255, 0.16), transparent 42%),
+                linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+    color: #fff;
   }
 
   .wrapper {
     width: min(1120px, 92vw);
     margin: 0 auto;
-    padding: 48px 0 64px;
+    padding: 44px 0 72px;
   }
 
   h1 {
     margin: 0;
-    text-align: center;
     font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: 1px;
+    text-align: center;
+    letter-spacing: 0.5px;
   }
 
   .subtitle {
-    margin: 14px auto 42px;
     text-align: center;
-    max-width: 700px;
     color: var(--text-subtle);
-    line-height: 1.55;
+    max-width: 760px;
+    margin: 14px auto 40px;
+    line-height: 1.6;
   }
 
-  .character-grid {
+  .profiles {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 18px;
   }
 
-  .character {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 18px;
+  .card {
     text-decoration: none;
-    color: white;
+    color: inherit;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
     padding: 18px;
-    backdrop-filter: blur(5px);
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    transition: transform .22s ease, border-color .22s ease;
   }
 
-  .character:hover,
-  .character:focus-visible {
-    transform: translateY(-6px);
-    border-color: rgba(102, 240, 255, 0.8);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-5px);
+    border-color: rgba(140, 201, 255, 0.8);
     outline: none;
   }
 
   .portrait {
-    aspect-ratio: 4 / 5;
     width: 100%;
+    aspect-ratio: 4/5;
     border-radius: 14px;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    border: 1px solid rgba(255,255,255,.18);
+    display: grid;
+    place-items: end center;
     padding-bottom: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #f9fcff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    text-shadow: 0 2px 8px rgba(0,0,0,.45);
   }
 
-  .portrait.c1 { background: linear-gradient(155deg, #2d6cdf, #6d31df); }
-  .portrait.c2 { background: linear-gradient(155deg, #db5e35, #8d244d); }
-  .portrait.c3 { background: linear-gradient(155deg, #2f9e7d, #21567d); }
-  .portrait.c4 { background: linear-gradient(155deg, #7e55df, #2c2370); }
-  .portrait.c5 { background: linear-gradient(155deg, #e0ab35, #855d1f); }
+  .nerelia { background: linear-gradient(150deg, #921f2e, #1b2f6a 58%, #111); }
+  .c2 { background: linear-gradient(150deg, #753422, #3c1824); }
+  .c3 { background: linear-gradient(150deg, #1f6a58, #163746); }
+  .c4 { background: linear-gradient(150deg, #4e3b9e, #1f1a40); }
+  .c5 { background: linear-gradient(150deg, #8a6a23, #30240e); }
 
-  .name {
-    margin: 14px 0 8px;
-    font-size: 1.15rem;
-    font-weight: 600;
-  }
-
-  .role {
-    margin: 0;
-    color: var(--text-subtle);
-    line-height: 1.4;
-    font-size: 0.95rem;
-  }
+  .name { margin: 14px 0 8px; font-size: 1.15rem; font-weight: 650; }
+  .summary { margin: 0; color: var(--text-subtle); line-height: 1.45; font-size: .95rem; }
 </style>
 </head>
 <body>
   <main class="wrapper">
-    <h1>Select Your Character</h1>
-    <p class="subtitle">Pick a hero to view their profile. This refreshed layout is mobile-friendly, easier to scan, and gives each character a distinct visual identity.</p>
+    <h1>Character Profiles</h1>
+    <p class="subtitle">A personal gallery for my original characters. Each profile is designed to highlight identity, history, and personality rather than a game-style selection screen.</p>
 
-    <section class="character-grid" aria-label="Character list">
-      <a href="character1.html" class="character">
-        <div class="portrait c1" aria-hidden="true">A1</div>
-        <h2 class="name">Character 1</h2>
-        <p class="role">Balanced all-rounder with strong attack and defense.</p>
+    <section class="profiles" aria-label="Character profiles">
+      <a href="character1.html" class="card">
+        <div class="portrait nerelia" aria-hidden="true">N</div>
+        <h2 class="name">Nerelía de los Navarén</h2>
+        <p class="summary">Rapier-wielding noble haunted by Delosa, a silent mirror spirit that never leaves her side.</p>
       </a>
 
-      <a href="character2.html" class="character">
+      <a href="character2.html" class="card">
         <div class="portrait c2" aria-hidden="true">B2</div>
         <h2 class="name">Character 2</h2>
-        <p class="role">Fast striker focused on speed and burst damage.</p>
+        <p class="summary">Profile page ready for customization.</p>
       </a>
 
-      <a href="character3.html" class="character">
+      <a href="character3.html" class="card">
         <div class="portrait c3" aria-hidden="true">C3</div>
         <h2 class="name">Character 3</h2>
-        <p class="role">Support specialist with buffs and healing skills.</p>
+        <p class="summary">Profile page ready for customization.</p>
       </a>
 
-      <a href="character4.html" class="character">
+      <a href="character4.html" class="card">
         <div class="portrait c4" aria-hidden="true">D4</div>
         <h2 class="name">Character 4</h2>
-        <p class="role">Long-range expert with precision abilities.</p>
+        <p class="summary">Profile page ready for customization.</p>
       </a>
 
-      <a href="character5.html" class="character">
+      <a href="character5.html" class="card">
         <div class="portrait c5" aria-hidden="true">E5</div>
         <h2 class="name">Character 5</h2>
-        <p class="role">Heavy defender built to protect allies on the front line.</p>
+        <p class="summary">Profile page ready for customization.</p>
       </a>
     </section>
   </main>

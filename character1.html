@@ -3,99 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Character 1</title>
+<title>Nerelía de los Navarén</title>
 <style>
   :root {
     color-scheme: dark;
-    --accent: #66f0ff;
-    --bg: #101632;
-    --panel: #1a2248;
+    --ink: #f3f6ff;
+    --paper: rgba(13, 18, 35, 0.86);
+    --line: rgba(255, 255, 255, 0.2);
+    --red: #b32239;
+    --blue: #264a99;
+    --ghost: #dce6ff;
+    --black: #070a11;
   }
+
+  * { box-sizing: border-box; }
 
   body {
     margin: 0;
     min-height: 100vh;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: radial-gradient(circle at top right, rgba(102, 240, 255, 0.2), transparent 45%), var(--bg);
-    color: white;
-    display: grid;
-    place-items: center;
+    font-family: "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 16% 10%, rgba(179, 34, 57, 0.24), transparent 38%),
+      radial-gradient(circle at 90% 12%, rgba(38, 74, 153, 0.30), transparent 36%),
+      linear-gradient(170deg, #0d1122, var(--black));
     padding: 28px;
   }
 
-  .card {
-    width: min(760px, 95vw);
-    background: var(--panel);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+  .profile {
+    width: min(980px, 96vw);
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
     border-radius: 18px;
-    padding: 26px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  }
-
-  h1 {
-    margin: 0 0 16px;
-    font-size: clamp(1.7rem, 4vw, 2.4rem);
-  }
-
-  .media {
-    border-radius: 14px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 18px;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.42);
   }
 
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    background: #0e122b;
+  .hero {
+    padding: 28px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(120deg, rgba(179, 34, 57, 0.18), rgba(38, 74, 153, 0.18));
   }
 
-  .stats {
-    margin: 18px 0 8px;
-    padding: 0;
-    list-style: none;
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: 0.4px;
+  }
+
+  .tagline {
+    margin: 0;
+    color: var(--ghost);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  .layout {
     display: grid;
-    gap: 10px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(250px, 0.85fr);
+    gap: 0;
   }
 
-  .stats li {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 10px 12px;
+  .content { padding: 28px; }
+  .aside {
+    border-left: 1px solid var(--line);
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.35rem;
+    color: #ffffff;
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .meta .item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #bdd2ff;
+    margin-bottom: 4px;
+  }
+
+  .value { line-height: 1.45; }
+
+  .backstory {
+    line-height: 1.75;
+    color: #eff3ff;
+  }
+
+  .card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    background: rgba(6, 9, 17, 0.45);
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    line-height: 1.55;
   }
 
   .back {
     display: inline-block;
-    margin-top: 16px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    margin: 20px 0 0;
+    padding: 10px 15px;
     text-decoration: none;
+    color: var(--ghost);
+    border: 1px solid var(--ghost);
+    border-radius: 9px;
+    font-family: "Segoe UI", Arial, sans-serif;
   }
 
   .back:hover,
   .back:focus-visible {
-    background: var(--accent);
-    color: #0e1b2e;
+    background: var(--ghost);
+    color: #131c38;
     outline: none;
+  }
+
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; }
+    .aside { border-left: 0; border-top: 1px solid var(--line); }
   }
 </style>
 </head>
 <body>
-  <article class="card">
-    <h1>Character 1 · Vanguard</h1>
-    <div class="media">
-      <img src="images/char1.png" alt="Character 1 portrait">
+  <article class="profile">
+    <header class="hero">
+      <h1>Nerelía de los Navarén</h1>
+      <p class="tagline">Rapier-wielding noble with a ghost in her shadow.</p>
+    </header>
+
+    <div class="layout">
+      <section class="content">
+        <h2>Character Details</h2>
+        <div class="meta">
+          <div class="item"><span class="label">Race & Gender</span><div class="value">Female High Elf</div></div>
+          <div class="item"><span class="label">Age</span><div class="value">42</div></div>
+          <div class="item"><span class="label">Class</span><div class="value">Echo Knight Fighter 3</div></div>
+          <div class="item"><span class="label">Alignment</span><div class="value">Chaotic Neutral</div></div>
+          <div class="item"><span class="label">Languages</span><div class="value">Common, Elvish, Draconic</div></div>
+          <div class="item"><span class="label">Ambition</span><div class="value">Free herself of Delosa, the spirit that continually follows her.</div></div>
+          <div class="item"><span class="label">Sexuality</span><div class="value">Feminine in nature — finsexuality.</div></div>
+        </div>
+
+        <h2>Backstory</h2>
+        <p class="backstory">Nerelìa was born on a grave, her mother’s final breath as cold as the earth in the pouring rain. Whether by curse, coincidence, ill-fortune, or something far more sinister, <em>something</em> took notice.</p>
+        <p class="backstory">She calls it Delosa.</p>
+        <p class="backstory">It has no true shape, yet often follows in her footsteps and takes her form—nude, with red markings on its face. From her earliest memories it has followed behind her, neither warm nor cold. Others rarely see it, though animals often freeze.</p>
+        <p class="backstory">It whispers to her in her own cadence and pitch. Its suggestions are not cruel, only pragmatic: a cold, grinding calculus. On matters of survival, it is too often right.</p>
+        <p class="backstory">She moves through the world with red eyes that hold too steady, a half-smile arriving a beat too late for comfort, and a habit of offering solutions that reveal how quickly her mind has already walked into darkness. She does not mean to unsettle people. She simply grew up where death was a neighbor and never learned to pretend otherwise.</p>
+        <p class="backstory">Behind Delosa’s usefulness lingers the question she has not asked aloud: why her? What was in that grave? What bargain—if any—was struck the night she was born, slick and screaming, into soil already claimed? The answer is her freedom, and so she walks.</p>
+
+        <a class="back" href="index.html">← Back to profiles</a>
+      </section>
+
+      <aside class="aside">
+        <div class="card">
+          <h2>Appearance</h2>
+          <ul>
+            <li>Height: 5'8"</li>
+            <li>Weight: 132 lbs</li>
+            <li>Skin: White</li>
+            <li>Eyes: Red</li>
+            <li>Long, pierced ears</li>
+            <li>Distinctive red coat</li>
+            <li>Carries a long, silvery rapier</li>
+            <li>Followed by a near-perfect naked copy of herself</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Interests</h2>
+          <ul>
+            <li>Macabre themes and horror stories</li>
+            <li>Necromancy, ghosts, and haunted places</li>
+            <li>Makeup and presentation</li>
+            <li>Dueling</li>
+          </ul>
+        </div>
+      </aside>
     </div>
-    <p>A balanced fighter designed for new and experienced players. Use Vanguard when you want solid damage, reliable defense, and easy combo options.</p>
-    <ul class="stats">
-      <li><strong>Role:</strong> Fighter</li>
-      <li><strong>Difficulty:</strong> Easy</li>
-      <li><strong>Signature skill:</strong> Arc Strike</li>
-    </ul>
-    <a class="back" href="index.html">← Back to character select</a>
   </article>
 </body>
 </html>
