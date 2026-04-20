@@ -2,91 +2,169 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Character Select</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Profiles</title>
 <style>
+  :root {
+    color-scheme: dark;
+    --bg-top: #090a14;
+    --bg-bottom: #121426;
+    --panel: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.14);
+    --text-subtle: #cdd5f2;
+  }
+
+  * { box-sizing: border-box; }
+
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1a1a2e, #16213e);
-    color: white;
-    text-align: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at 15% 0%, rgba(140, 201, 255, 0.16), transparent 42%),
+                linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+    color: #fff;
+  }
+
+  .wrapper {
+    width: min(1180px, 94vw);
+    margin: 0 auto;
+    padding: 44px 0 72px;
   }
 
   h1 {
-    margin: 30px 0;
-    font-size: 2.5em;
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    letter-spacing: 0.5px;
   }
 
-  .container {
+  .subtitle {
+    text-align: center;
+    color: var(--text-subtle);
+    max-width: 760px;
+    margin: 14px auto 36px;
+    line-height: 1.6;
+  }
+
+  .profiles {
     display: flex;
-    flex-direction: column;   /* 🔥 vertical stack */
-    align-items: center;
-    gap: 40px;
-    padding-bottom: 50px;
+    flex-direction: column;
+    gap: 18px;
   }
 
-  .character {
+  .card {
     text-decoration: none;
-    color: white;
-    width: 500px; /* 🔥 controls overall size */
-    transition: transform 0.3s ease;
-  }
-
-  .character img {
-    width: 100%;
-    height: auto;  /* ✅ keeps aspect ratio */
+    color: inherit;
+    background: var(--panel);
+    border: 1px solid var(--border);
     border-radius: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 310px minmax(0, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    min-height: 360px;
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
   }
 
-  .character:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px #00f7ff;
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(140, 201, 255, 0.8);
+    box-shadow: 0 8px 28px rgba(0,0,0,.35);
+    outline: none;
+  }
+
+  .thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.25);
+    padding: 8px;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 6px 4px;
   }
 
   .name {
-    margin-top: 12px;
-    font-size: 1.4em;
-    letter-spacing: 1px;
+    margin: 0;
+    font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+    font-weight: 700;
   }
 
+  .sinker {
+    margin: 0;
+    color: #e5ecff;
+    line-height: 1.5;
+    font-size: 1.02rem;
+  }
+
+  @media (max-width: 880px) {
+    .card {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .thumb {
+      min-height: 360px;
+      max-height: 520px;
+    }
+  }
 </style>
 </head>
-
 <body>
+  <main class="wrapper">
+    <h1>Character Profiles</h1>
+    <p class="subtitle">A personal gallery for my original characters.</p>
 
-<h1>Select Your Character</h1>
+    <section class="profiles" aria-label="Character profiles">
+      <a href="character1.html" class="card">
+        <img class="thumb" src="images/char1.png" alt="Nerelía de los Navarén">
+        <div class="meta">
+          <h2 class="name">Nerelía de los Navarén</h2>
+          <p class="sinker">Rapier-wielding noble haunted by Delosa, a ghost that never leaves her side.</p>
+        </div>
+      </a>
 
-<div class="container">
+      <a href="character2.html" class="card">
+        <img class="thumb" src="images/char2.png" alt="Character 2">
+        <div class="meta">
+          <h2 class="name">Character 2</h2>
+          <p class="sinker">A fast duelist profile focused on burst motion and aggressive pressure.</p>
+        </div>
+      </a>
 
-  <a href="character1.html" class="character">
-    <img src="images/char1.png">
-    <div class="name">Character 1</div>
-  </a>
+      <a href="character3.html" class="card">
+        <img class="thumb" src="images/char3.png" alt="Character 3">
+        <div class="meta">
+          <h2 class="name">Character 3</h2>
+          <p class="sinker">A support profile centered on healing, buffs, and battlefield control.</p>
+        </div>
+      </a>
 
-  <a href="character2.html" class="character">
-    <img src="images/char2.png">
-    <div class="name">Character 2</div>
-  </a>
+      <a href="character4.html" class="card">
+        <img class="thumb" src="images/char4.png" alt="Character 4">
+        <div class="meta">
+          <h2 class="name">Character 4</h2>
+          <p class="sinker">A precision long-range profile built for tactical positioning.</p>
+        </div>
+      </a>
 
-  <a href="character3.html" class="character">
-    <img src="images/char3.png">
-    <div class="name">Character 3</div>
-  </a>
-
-  <a href="character4.html" class="character">
-    <img src="images/char4.png">
-    <div class="name">Character 4</div>
-  </a>
-
-  <a href="character5.html" class="character">
-    <img src="images/char5.png">
-    <div class="name">Character 5</div>
-  </a>
-
-</div>
-
+      <a href="character5.html" class="card">
+        <img class="thumb" src="images/char5.png" alt="Character 5">
+        <div class="meta">
+          <h2 class="name">Character 5</h2>
+          <p class="sinker">A durable frontline profile focused on protection and control.</p>
+        </div>
+      </a>
+    </section>
+  </main>
 </body>
 </html>
