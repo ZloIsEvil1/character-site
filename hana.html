@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Character Profiles</title>
+<title>Hana's Characters</title>
 <style>
   :root {
     color-scheme: dark;
@@ -15,7 +15,6 @@
   }
 
   * { box-sizing: border-box; }
-
   body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -29,6 +28,13 @@
     width: min(1040px, 92vw);
     margin: 0 auto;
     padding: 44px 0 72px;
+  }
+
+  a.home-link {
+    color: #aad4ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
   }
 
   h1 {
@@ -100,43 +106,19 @@
 </head>
 <body>
   <main class="wrapper">
-    <h1>Character Profiles</h1>
-    <p class="subtitle">A personal gallery for my original characters.</p>
+    <a class="home-link" href="index.html">← Back to landing page</a>
+    <h1>Hana's Characters</h1>
+    <p class="subtitle">Browse the current Hana character collection.</p>
 
-    <section class="profiles" aria-label="Character sections">
-      <a href="hornet.html" class="card">
-        <img class="thumb" src="images/hornetpreview.png" alt="Hornet's Characters">
+    <section class="profiles" aria-label="Hana character profiles">
+      <a href="hanacharacter1.html" class="card">
+        <img class="thumb" src="images/hanachar1.png" alt="Bethen Kal">
         <div>
-          <h2 class="name">Hornet's Characters</h2>
-          <p class="summary">Browse Hornet's current collection of profiles and character pages.</p>
-        </div>
-      </a>
-
-      <a href="foxxy.html" class="card">
-        <img class="thumb" src="images/foxxypreview.png" alt="Foxxy's Characters">
-        <div>
-          <h2 class="name">Foxxy's Characters</h2>
-          <p class="summary">Coming soon: Foxxy's own character gallery will be available here.</p>
-        </div>
-      </a>
-
-      <a href="hana.html" class="card">
-        <img class="thumb" src="images/hanapreview.png" alt="Hana's Characters">
-        <div>
-          <h2 class="name">Hana's Characters</h2>
-          <p class="summary">Explore Hana's mysterious character collection.</p>
+          <h2 class="name">Bethen Kal</h2>
+          <p class="summary">Conjuration wizard from the frigid north, seeking to master magic and bring it back home.</p>
         </div>
       </a>
     </section>
   </main>
-
-  <script>
-    // Hide images that fail to load
-    document.querySelectorAll('.thumb').forEach(img => {
-      img.addEventListener('error', () => {
-        img.style.display = 'none';
-      });
-    });
-  </script>
 </body>
 </html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bethen Kal — NSFW Version</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --ink: #f3f6ff;
+    --paper: rgba(13, 18, 35, 0.86);
+    --line: rgba(255, 255, 255, 0.2);
+    --ghost: #dce6ff;
+    --black: #070a11;
+  }
+
+  * { box-sizing: border-box; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 16% 10%, rgba(179, 34, 57, 0.24), transparent 38%),
+      radial-gradient(circle at 90% 12%, rgba(38, 74, 153, 0.30), transparent 36%),
+      linear-gradient(170deg, #0d1122, var(--black));
+    padding: 28px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  body.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  .profile {
+    width: min(1120px, 96vw);
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.42);
+  }
+
+  .hero {
+    padding: 28px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(120deg, rgba(179, 34, 57, 0.18), rgba(38, 74, 153, 0.18));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .hero-text h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: 0.4px;
+  }
+
+  .tagline {
+    margin: 0;
+    color: var(--ghost);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  .nsfw-toggle {
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--ghost);
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .nsfw-toggle:hover,
+  .nsfw-toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .relief-toggle {
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--ghost);
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .relief-toggle:hover,
+  .relief-toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 460px);
+    gap: 28px;
+  }
+
+  .content { padding: 28px; }
+
+  .relief {
+    position: relative;
+    border-left: 1px solid var(--line);
+    min-height: 760px;
+    background: linear-gradient(to left, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25));
+    overflow: hidden;
+  }
+
+  .relief::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("reliefs/hanachar1nsfw.png") center center / auto 96% no-repeat;
+    transition: background-image 0.3s ease;
+  }
+
+  .relief.alt::after {
+    background-image: url("reliefs/hanachar1alt.png");
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.35rem;
+    color: #ffffff;
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .meta .item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #bdd2ff;
+    margin-bottom: 4px;
+  }
+
+  .value { line-height: 1.45; }
+
+  .backstory {
+    line-height: 1.75;
+    color: #eff3ff;
+  }
+
+  .card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px;
+    margin: 0;
+    background: rgba(6, 9, 17, 0.45);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.75);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .modal-backdrop.active {
+    display: flex;
+  }
+
+  .modal-panel {
+    position: relative;
+    width: min(100%, 1200px);
+    max-height: min(95vh, 100%);
+    background: rgba(10, 14, 24, 0.96);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    overflow: auto;
+  }
+
+  .modal-panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    border-radius: 14px;
+    object-fit: contain;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .modal-close:hover,
+  .modal-close:focus-visible {
+    background: rgba(255, 255, 255, 0.18);
+    outline: none;
+  }
+
+  @media (max-width: 900px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    line-height: 1.55;
+  }
+
+  .back {
+    display: inline-block;
+    margin: 20px 0 0;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--ghost);
+    border: 1px solid var(--ghost);
+    border-radius: 9px;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  .back:hover,
+  .back:focus-visible {
+    background: var(--ghost);
+    color: #131c38;
+    outline: none;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .layout { grid-template-columns: 1fr; }
+    .relief {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      min-height: 520px;
+      background: linear-gradient(to top, rgba(7, 10, 17, 0.92), rgba(7, 10, 17, 0.25));
+    }
+
+    .relief::after {
+      background-size: auto 94%;
+      background-position: center center;
+    }
+  }
+</style>
+</head>
+<body>
+  <article class="profile">
+    <header class="hero">
+      <div class="hero-text">
+        <h1>Bethen Kal</h1>
+        <p class="tagline">Conjuration wizard seeking to bring magic north.</p>
+      </div>
+      <div class="hero-buttons">
+        <button class="relief-toggle" type="button" id="reliefToggle" aria-label="Toggle alt view">Show Alt View</button>
+        <button class="nsfw-toggle" type="button" id="safeToggle">Safe Version</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <section class="content">
+        <h2>Character Details</h2>
+        <div class="meta">
+          <div class="item"><span class="label">Race & Gender</span><div class="value">Human Female</div></div>
+          <div class="item"><span class="label">Age</span><div class="value">22</div></div>
+          <div class="item"><span class="label">Class</span><div class="value">Conjuration Wizard</div></div>
+          <div class="item"><span class="label">Alignment</span><div class="value">Lawful Evil</div></div>
+          <div class="item"><span class="label">Languages</span><div class="value">Common, Common Sign Language, Primordial</div></div>
+          <div class="item"><span class="label">Ambition</span><div class="value">Become strong enough to be able to bring magic north.</div></div>
+          <div class="item"><span class="label">Sexuality</span><div class="value">Pansexual</div></div>
+          <div class="item"><span class="label">Kinklist</span><div class="value"><a href="#" class="kinklist-link">View kinklist</a></div></div>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card">
+            <h2>Kinks</h2>
+            <ul>
+              <li>Virgin, thus unknown to her</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Limits</h2>
+            <ul>
+              <li>Server Limits</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Dislikes</h2>
+            <ul>
+              <li>Bethen is rather laissez faire about most things. She takes her studies seriously and all manners involving them, but outside of that she tends to like letting people be. A rare sight is it for Bethen to speak her mind about the other minute around her save directly asked for it by someone she thinks well of.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <aside class="relief" aria-label="Bethen full-body relief artwork (NSFW)"></aside>
+    </div>
+  </article>
+
+  <div class="modal-backdrop" id="kinklistModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Kinklist preview">
+      <button class="modal-close" type="button" aria-label="Close">×</button>
+      <img id="kinklistImage" alt="Kinklist preview" src="" />
+    </div>
+  </div>
+
+  <script>
+    const kinklistLink = document.querySelector('.kinklist-link');
+    const kinklistModal = document.getElementById('kinklistModal');
+    const kinklistImage = document.getElementById('kinklistImage');
+    const closeButton = kinklistModal.querySelector('.modal-close');
+    const kinklistUrl = 'https://example.com/hana-kinklist.png'; // Placeholder URL
+
+    function openKinklist() {
+      kinklistImage.src = kinklistUrl;
+      kinklistModal.classList.add('active');
+      kinklistModal.removeAttribute('aria-hidden');
+    }
+
+    function closeKinklist() {
+      kinklistModal.classList.remove('active');
+      kinklistModal.setAttribute('aria-hidden', 'true');
+      kinklistImage.src = '';
+    }
+
+    kinklistLink.addEventListener('click', event => {
+      event.preventDefault();
+      openKinklist();
+    });
+
+    closeButton.addEventListener('click', closeKinklist);
+    kinklistModal.addEventListener('click', event => {
+      if (event.target === kinklistModal) {
+        closeKinklist();
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && kinklistModal.classList.contains('active')) {
+        closeKinklist();
+      }
+    });
+
+    const safeToggle = document.getElementById('safeToggle');
+    safeToggle.addEventListener('click', () => {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'hanacharacter1.html';
+      }, 300);
+    });
+
+    const reliefToggle = document.getElementById('reliefToggle');
+    const relief = document.querySelector('.relief');
+    let isAltView = false;
+
+    reliefToggle.addEventListener('click', () => {
+      isAltView = !isAltView;
+      relief.classList.toggle('alt', isAltView);
+      reliefToggle.textContent = isAltView ? 'Show Hana' : 'Show Alt View';
+    });
+  </script>
+</body>
+</html>
